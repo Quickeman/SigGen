@@ -7,7 +7,7 @@
 class SawtoothGenerator : public PitchedGenerator {
 public:
     /** Default constructor. */
-    SawtoothGenerator(const float_t sample_rate): PitchedGenerator(sample_rate) {}
+    SawtoothGenerator(const float_t sample_rate);
 
     /** Default destructor. */
     ~SawtoothGenerator() = default;
@@ -18,7 +18,7 @@ public:
 class SquareGenerator : public PitchedGenerator {
 public:
     /** Default constructor. */
-    SquareGenerator(const float_t sample_rate): PitchedGenerator(sample_rate) {}
+    SquareGenerator(const float_t sample_rate);
 
     /** Default constructor. */
     ~SquareGenerator() = default;
@@ -29,7 +29,7 @@ public:
 class RectangleGenerator : public PitchedGenerator {
 public:
     /** Default constructor. */
-    RectangleGenerator(const float_t sample_rate): PitchedGenerator(sample_rate) {}
+    RectangleGenerator(const float_t sample_rate);
 
     /** Default destructor. */
     ~RectangleGenerator() = default;
@@ -50,7 +50,7 @@ private:
 class TriangleGenerator : public PitchedGenerator {
 public:
     /** Default constructor. */
-    TriangleGenerator(const float_t sample_rate): PitchedGenerator(sample_rate) {}
+    TriangleGenerator(const float_t sample_rate);
 
     /** Default destructor. */
     ~TriangleGenerator() = default;

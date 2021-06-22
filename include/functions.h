@@ -9,8 +9,6 @@ namespace maths {
 /** Returns $x^n$. */
 template<typename T>
 T power(T x, int n) {
-    if (n == 0) return (T)1;
-
     T rv = 1;
 
     if (n > 0) {
@@ -21,6 +19,8 @@ T power(T x, int n) {
         for (int i = 0; i < abs(n); i++)
             rv /= x;
     }
+    
+    return rv;
 }
 
 /** Returns $x!$. */
@@ -66,7 +66,7 @@ T sinTaylorSafe(T x) {
     constexpr T twopi = pi + pi;
 
     if ((x > twopi) or (x < (T)0.0)) {
-        x = modf(x, twopi);
+        x = fmod(x, twopi);
     }
 
     if (x > pi) {
@@ -84,7 +84,7 @@ T sign(T x) {
     if (x == 0) {
         return 0;
     }
-    return (x > 0) ? 1 : -1
+    return (x > 0) ? 1 : -1;
 }
 
 } // namespace maths
