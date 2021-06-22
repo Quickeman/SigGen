@@ -1,6 +1,6 @@
-#include "common/common.h"
+#include "common.h"
 
-#include "common/functions.h"
+#include "functions.h"
 
 using namespace std;
 

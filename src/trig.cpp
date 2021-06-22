@@ -1,4 +1,6 @@
-#include "common/trig.h"
+#include "trig.h"
+
+#include "functions.h"
 
 using namespace std;
 

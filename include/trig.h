@@ -3,8 +3,6 @@
 
 #include "base_classes.h"
 
-#include "functions.h"
-
 #include <math.h>
 #include <functional>
 
