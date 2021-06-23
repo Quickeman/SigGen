@@ -36,6 +36,7 @@ enable_testing()
 
 # Make sure the compiler looks in the src directory
 include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(test/framework)
 
 # Include test files
 file(GLOB TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
@@ -45,7 +46,9 @@ foreach(testSrc ${TEST_SRCS})
     get_filename_component(testName ${testSrc} NAME_WE)
     # Add target
     add_executable(${testName} ${testSrc})
-    # Link to Boost, source code and other external libraries
+    # Include source headers
+    target_link_directories(${testName} INTERFACE ${PROJECT_SOURCE_DIR}/src)
+    # Link to source code
     target_link_libraries(${testName} ${LIB_NAME})
     # Put test executables in their own directory
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin)
