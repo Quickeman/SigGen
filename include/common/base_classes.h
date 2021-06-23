@@ -17,22 +17,12 @@ public:
     /** Default destructor. */
     ~SignalGenerator() = default;
 
-    /** Generate method.
-     * Returns a buffer (vector) of `T`, length `n`, filled with zero values.
-     * @param n buffer size.
+protected:
+    /** Function to call to generate samples.
+     * Reommended to assign a lambda expression to this, though some raw
+     * functions may work as well.
      */
-    virtual std::vector<float_t> generate(size_t n) = 0;
-};
-
-
-/** Unpitched generator base class. */
-class UnpitchedGenerator : public SignalGenerator {
-public:
-    /** Default constructor. */
-    UnpitchedGenerator() = default;
-
-    /** Default destructor. */
-    ~UnpitchedGenerator() = default;
+    std::function<float_t(float_t)> generator;
 };
 
 
@@ -84,12 +74,22 @@ protected:
             x = min;
         }
     } phase;
+};
 
-    /** Function to call to generate samples.
-     * Reommended to assign a lambda expression to this, though some raw
-     * functions may work as well.
+
+/** Unpitched generator base class. */
+class UnpitchedGenerator : public SignalGenerator {
+public:
+    /** Default constructor. */
+    UnpitchedGenerator() = default;
+
+    /** Default destructor. */
+    ~UnpitchedGenerator() = default;
+
+    /** Generate method.
+     * Returns a zero-filled vector of length `n`.
      */
-    std::function<float_t(float_t)> generator;
+    virtual std::vector<float_t> generate(size_t n) { return std::vector<float_t>(n); }
 };
 
 #endif

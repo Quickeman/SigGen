@@ -1,7 +1,7 @@
 #ifndef _SIGGEN_TRIG_H
 #define _SIGGEN_TRIG_H
 
-#include "common/base_classes.h"
+#include "../common/base_classes.h"
 
 #include <math.h>
 #include <functional>

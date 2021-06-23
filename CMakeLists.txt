@@ -17,6 +17,6 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(/usr/local/include)
 link_directories(/usr/local/lib)
 
-include_directories(include)
+include_directories(include/*/)
 add_subdirectory(src)
 add_subdirectory(test)
