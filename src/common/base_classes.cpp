@@ -1,4 +1,4 @@
-#include "base_classes.h"
+#include "common/base_classes.h"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ vector<float_t> PitchedGenerator::generate(size_t n, float_t f) {
     float_t nf = phase.range * f / sRate;
 
     for (int i = 0; i < n; i++) {
-        rv[i] = func(phase.x);
+        rv[i] = generator(phase.x);
         if (phase.x >= phase.max) 
             phase.x -= phase.range;
     }

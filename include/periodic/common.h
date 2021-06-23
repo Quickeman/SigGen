@@ -1,8 +1,7 @@
 #ifndef _SIGGEN_COMMON_H
 #define _SIGGEN_COMMON_H
 
-#include "base_classes.h"
-#include "trig.h"
+#include "common/base_classes.h"
 
 /** Sawtooth wave generator. */
 class SawtoothGenerator : public PitchedGenerator {

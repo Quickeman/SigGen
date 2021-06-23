@@ -1,5 +1,5 @@
-#ifndef _SIGGEN_SIGNAL_GENERATOR_H
-#define _SIGGEN_SIGNAL_GENERATOR_H
+#ifndef _SIGGEN_BASE_CLASSES_H
+#define _SIGGEN_BASE_CLASSES_H
 
 #include <vector>
 #include <functional>
@@ -89,7 +89,7 @@ protected:
      * Reommended to assign a lambda expression to this, though some raw
      * functions may work as well.
      */
-    std::function<float_t(float_t)> func;
+    std::function<float_t(float_t)> generator;
 };
 
 #endif
