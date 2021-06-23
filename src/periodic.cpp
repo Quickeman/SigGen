@@ -1,8 +1,6 @@
-#include "common.h"
+#include "periodic.h"
 
 #include "functions.h"
-
-using namespace std;
 
 SawtoothGenerator::SawtoothGenerator(const float_t sample_rate):
     PitchedGenerator(sample_rate) {
