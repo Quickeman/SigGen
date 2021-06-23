@@ -1,6 +1,6 @@
-#include "../../include/periodic/trig.h"
+#include "trig.h"
 
-#include "../../include/common/functions.h"
+#include "functions.h"
 
 using namespace std;
 

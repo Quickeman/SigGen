@@ -1,4 +1,4 @@
-#include "../../include/lookup/lookup_base.h"
+#include "lookup_base.h"
 
 using namespace std;
 

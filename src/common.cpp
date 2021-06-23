@@ -1,6 +1,6 @@
-#include "../../include/periodic/common.h"
+#include "common.h"
 
-#include "../../include/common/functions.h"
+#include "functions.h"
 
 SawtoothGenerator::SawtoothGenerator(const float_t sample_rate):
     PitchedGenerator(sample_rate) {

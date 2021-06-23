@@ -1,7 +1,7 @@
 #ifndef _SIGGEN_LOOKUP_BASE_H
 #define _SIGGEN_LOOKUP_BASE_H
 
-#include "../common/base_classes.h"
+#include "base_classes.h"
 
 /** Lookup table generator. */
 class LookupTable : public UnpitchedGenerator {
