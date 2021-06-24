@@ -34,6 +34,9 @@ set_target_properties(${LIB_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_
 # Enable `make test` command
 enable_testing()
 
+# Enable test output on failure
+set(CTEST_OUTPUT_ON_FAILURE TRUE)
+
 # Make sure the compiler looks in the src directory
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(test/framework)
