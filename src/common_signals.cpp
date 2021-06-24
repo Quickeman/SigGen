@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common_signals.h"
 
 #include "functions.h"
 

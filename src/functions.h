@@ -25,7 +25,7 @@ T power(T x, int n) {
 
 /** Returns $x!$. */
 template<typename T>
-T fatorial(T x) {
+T factorial(T x) {
     T rv;
     if (x < 0) {
         rv = 0;
@@ -50,10 +50,10 @@ template<typename T>
 T sinTaylor(T x) {
     return (
         x
-        - (power(x, 3) / fatorial(3))
-        + (power(x, 5) / fatorial(5))
-        - (power(x, 7) / fatorial(7))
-        + (power(x, 9) / fatorial(9))
+        - (power(x, 3) / factorial(3))
+        + (power(x, 5) / factorial(5))
+        - (power(x, 7) / factorial(7))
+        + (power(x, 9) / factorial(9))
     );
 }
 

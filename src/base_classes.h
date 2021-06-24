@@ -9,13 +9,13 @@ typedef float float_t;
 /** Signal generation base class.
  * All signal generators inherit from this class.
  */
-class SignalGenerator {
+class _GeneratorBase {
 public:
     /** Default constructor. */
-    SignalGenerator() = default;
+    _GeneratorBase() = default;
 
     /** Default destructor. */
-    ~SignalGenerator() = default;
+    ~_GeneratorBase() = default;
 
 protected:
     /** Function to call to generate samples.
@@ -27,7 +27,7 @@ protected:
 
 
 /** Pitched generator base class. */
-class PitchedGenerator : public SignalGenerator {
+class PitchedGenerator : public _GeneratorBase {
 public:
     /** Constructor.
      * @param sample_rate sample rate.
@@ -78,7 +78,7 @@ protected:
 
 
 /** Unpitched generator base class. */
-class UnpitchedGenerator : public SignalGenerator {
+class UnpitchedGenerator : public _GeneratorBase {
 public:
     /** Default constructor. */
     UnpitchedGenerator() = default;
