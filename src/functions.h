@@ -54,6 +54,7 @@ T sinTaylor(T x) {
         + (power(x, 5) / factorial(5))
         - (power(x, 7) / factorial(7))
         + (power(x, 9) / factorial(9))
+        - (power(x, 11) / factorial(11))
     );
 }
 
@@ -89,7 +90,7 @@ T sign(T x) {
 
 /** Determines if `a` is within `delta` range of `b`. */
 template<typename T>
-bool isNear(T a, T b, T delta = 1e-6) {
+bool isNear(T a, T b, T delta = (T)1e-6) {
     return abs(a - b) <= delta;
 }
 

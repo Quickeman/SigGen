@@ -1,4 +1,4 @@
-#include "trig.h"
+#include "trig_signals.h"
 
 #include "functions.h"
 
@@ -34,7 +34,8 @@ CosineGenerator::CosineGenerator(const float_t sample_rate):
 FastCosineGenerator::FastCosineGenerator(const float_t sample_rate):
     TrigGenerator(sample_rate) {
     generator = [&](float_t x) {
-        return -maths::sinTaylorSafe(x);
+        if (x > M_PI_2) x -= 2.0 * M_PI;
+        return -maths::sinTaylorSafe(x + M_PI_2);
     };
-    phase.setRange((-M_PI / 2.0), (3.0 * M_PI / 4.0));
+    phase.setRange(-M_PI, M_PI);
 }
