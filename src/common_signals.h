@@ -34,10 +34,10 @@ public:
     /** Default destructor. */
     ~RectangleGenerator() = default;
 
-    /** Set the pulse width. */
+    /** Set the pulse width [0:1]. */
     inline void pulseWidth(float_t pw) { pWidth = pw; }
 
-    /** Get the pulse width. */
+    /** Get the pulse width [0:1]. */
     inline float_t pulseWidth() { return pWidth; }
 
 private:

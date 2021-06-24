@@ -67,6 +67,7 @@ protected:
         void setRange(float_t min, float_t max) {
             this->min = min;
             this->max = max;
+            range = max - min;
             reset();
         }
         /** Reset the phase. */

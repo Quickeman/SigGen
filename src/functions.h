@@ -87,6 +87,12 @@ T sign(T x) {
     return (x > 0) ? 1 : -1;
 }
 
+/** Determines if `a` is within `delta` range of `b`. */
+template<typename T>
+bool isNear(T a, T b, T delta = 1e-6) {
+    return abs(a - b) <= delta;
+}
+
 } // namespace maths
 
 #endif

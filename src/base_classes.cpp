@@ -14,6 +14,7 @@ vector<float_t> PitchedGenerator::generate(size_t n, float_t f) {
 
     for (int i = 0; i < n; i++) {
         rv[i] = generator(phase.x);
+        phase.x += nf;
         if (phase.x >= phase.max) 
             phase.x -= phase.range;
     }
