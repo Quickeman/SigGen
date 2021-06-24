@@ -20,12 +20,18 @@ link_directories(/usr/local/lib)
 ### SOURCE CODE ###
 
 # Get a list of source files
-file(GLOB SRCS src/*.cpp)
+file(GLOB SRCS ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 # Library of all source code
 add_library(${LIB_NAME} ${SRCS})
+
 # Put compiled library in bin
 set_target_properties(${LIB_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+
+# Create symlink for include files
+file(CREATE_LINK ${PROJECT_SOURCE_DIR}/src/SigGen.h ${PROJECT_SOURCE_DIR}/include/SigGen.h)
+file(CREATE_LINK ${PROJECT_SOURCE_DIR}/src/periodic.h ${PROJECT_SOURCE_DIR}/include/periodic.h)
+file(CREATE_LINK ${PROJECT_SOURCE_DIR}/src/lookup.h ${PROJECT_SOURCE_DIR}/include/lookup.h)
 
 
 
@@ -39,7 +45,7 @@ set(CTEST_OUTPUT_ON_FAILURE TRUE)
 
 # Make sure the compiler looks in the src directory
 include_directories(${PROJECT_SOURCE_DIR}/src)
-include_directories(test/framework)
+include_directories(${PROJECT_SOURCE_DIR}/test/framework)
 
 # Include test files
 file(GLOB TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
