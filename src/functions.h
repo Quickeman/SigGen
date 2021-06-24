@@ -8,17 +8,11 @@ namespace maths {
 
 /** Returns $x^n$. */
 template<typename T>
-T power(T x, int n) {
+T power(T x, unsigned int n) {
     T rv = 1;
 
-    if (n > 0) {
-        for (int i = 0; i < n; i++)
-            rv *= x;
-    }
-    if (n < 0) {
-        for (int i = 0; i < abs(n); i++)
-            rv /= x;
-    }
+    for (int i = 0; i < n; i++)
+        rv *= x;
     
     return rv;
 }
@@ -26,19 +20,10 @@ T power(T x, int n) {
 /** Returns $x!$. */
 template<typename T>
 T factorial(T x) {
-    T rv;
-    if (x < 0) {
-        rv = 0;
-    } 
-    else if (x == 0) {
-        rv = 1;
-    } 
-    else {
-        rv = 1;
-        while (x > 0) {
-            rv *= x;
-            x--;
-        }
+    T rv = 1;
+    while (x > 0) {
+        rv *= x;
+        x -= 1;
     }
     return rv;
 }
