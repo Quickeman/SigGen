@@ -5,5 +5,4 @@
 #include "trig_signals.h"
 #include "custom_signal.h"
 
-
 #endif

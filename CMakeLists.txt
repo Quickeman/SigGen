@@ -28,11 +28,6 @@ add_library(${LIB_NAME} ${SRCS})
 # Put compiled library in bin
 set_target_properties(${LIB_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-# Create symlink for include files
-file(CREATE_LINK ${PROJECT_SOURCE_DIR}/src/SigGen.h ${PROJECT_SOURCE_DIR}/include/SigGen.h)
-file(CREATE_LINK ${PROJECT_SOURCE_DIR}/src/periodic.h ${PROJECT_SOURCE_DIR}/include/periodic.h)
-file(CREATE_LINK ${PROJECT_SOURCE_DIR}/src/lookup.h ${PROJECT_SOURCE_DIR}/include/lookup.h)
-
 
 
 ### UNIT TESTING ###

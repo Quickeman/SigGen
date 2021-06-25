@@ -50,6 +50,3 @@ Testing/
 
 # MacOS
 *.DS_Store
-
-# Include hard-linked headers
-include/*
