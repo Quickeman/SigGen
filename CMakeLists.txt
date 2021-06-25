@@ -28,6 +28,9 @@ add_library(${LIB_NAME} ${SRCS})
 # Put compiled library in bin
 set_target_properties(${LIB_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
+# Include the include/ directory for downstream projects
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
 
 
 ### UNIT TESTING ###
@@ -50,8 +53,6 @@ foreach(testSrc ${TEST_SRCS})
     get_filename_component(testName ${testSrc} NAME_WE)
     # Add target
     add_executable(${testName} ${testSrc})
-    # Include source headers
-    target_link_directories(${testName} INTERFACE ${PROJECT_SOURCE_DIR}/src)
     # Link to source code
     target_link_libraries(${testName} ${LIB_NAME})
     # Put test executables in their own directory
