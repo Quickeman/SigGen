@@ -7,8 +7,10 @@ LookupTable::LookupTable(size_t n, function<float_t(float_t)> expr, float_t min,
 }
 
 void LookupTable::generate(size_t n, function<float_t(float_t)> expr, float_t min, float_t max) {
-    table.clear();
+    if (table.size()) table.clear();
     table.resize(n);
+
+    generator = expr;
 
     float_t inc;
     float_t x;
