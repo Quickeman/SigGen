@@ -1,4 +1,4 @@
-#include "common_signals.h"
+#include "signal_common.h"
 
 #include "unit_test_framework.h"
 

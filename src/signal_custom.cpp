@@ -1,13 +1,13 @@
-#include "custom_signal.h"
+#include "signal_custom.h"
 
 using namespace std;
 
-CustomGenerator::CustomGenerator(
+SignalGenerator::SignalGenerator(
     const float_t sample_rate,
     function<float_t(float_t)> expr,
     float_t phaseMin,
     float_t phaseMax):
-    PitchedGenerator(sample_rate) {
+    _PitchedGenerator(sample_rate) {
     generator = expr;
     phase.setRange(phaseMin, phaseMax);
 }

@@ -1,6 +1,6 @@
 #ifndef _SIGGEN_LOOKUP_H
 #define _SIGGEN_LOOKUP_H
 
-#include "custom_lookup.h"
+#include "lookup_table.h"
 
 #endif

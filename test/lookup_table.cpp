@@ -1,4 +1,4 @@
-#include "custom_lookup.h"
+#include "lookup_table.h"
 
 #include "unit_test_framework.h"
 

@@ -7,7 +7,7 @@
 #include <functional>
 
 /** Trigonometric function generator. */
-class TrigGenerator : public PitchedGenerator {
+class TrigGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
     TrigGenerator(const float_t sample_rate);

@@ -1,4 +1,4 @@
-#include "trig_signals.h"
+#include "signal_trig.h"
 
 #include "unit_test_framework.h"
 

@@ -4,7 +4,7 @@
 #include "base_classes.h"
 
 /** Sawtooth wave generator. */
-class SawtoothGenerator : public PitchedGenerator {
+class SawtoothGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
     SawtoothGenerator(const float_t sample_rate);
@@ -15,7 +15,7 @@ public:
 
 
 /** Square wave generator. */
-class SquareGenerator : public PitchedGenerator {
+class SquareGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
     SquareGenerator(const float_t sample_rate);
@@ -26,7 +26,7 @@ public:
 
 
 /** Rectangle generator. */
-class RectangleGenerator : public PitchedGenerator {
+class RectangleGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
     RectangleGenerator(const float_t sample_rate);
@@ -47,7 +47,7 @@ private:
 
 
 /** Triangle wave generator. */
-class TriangleGenerator : public PitchedGenerator {
+class TriangleGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
     TriangleGenerator(const float_t sample_rate);

@@ -3,7 +3,7 @@
 
 #include "base_classes.h"
 
-class _LookupTableBase : public UnpitchedGenerator {
+class _LookupTableBase : public _UnpitchedGenerator {
 public:
     /** Default constructor. */
     _LookupTableBase() = default;

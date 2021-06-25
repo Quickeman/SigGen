@@ -1,4 +1,4 @@
-#include "custom_signal.h"
+#include "signal_custom.h"
 
 #include "unit_test_framework.h"
 
@@ -17,7 +17,7 @@ int main() {
     float_t pMin = -1.0;
     float_t pMax = 1.0;
 
-    CustomGenerator gen(sr, lambda, pMin, pMax);
+    SignalGenerator gen(sr, lambda, pMin, pMax);
 
     std::vector<float_t> r = gen.generate(bl, 1.0);
 

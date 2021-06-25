@@ -27,15 +27,15 @@ protected:
 
 
 /** Pitched generator base class. */
-class PitchedGenerator : public _GeneratorBase {
+class _PitchedGenerator : public _GeneratorBase {
 public:
     /** Constructor.
      * @param sample_rate sample rate.
      */
-    PitchedGenerator(const float_t sample_rate);
+    _PitchedGenerator(const float_t sample_rate);
 
     /** Default destructor. */
-    ~PitchedGenerator() = default;
+    ~_PitchedGenerator() = default;
 
     /** Pitched generate method.
      * @param n buffer size.
@@ -79,13 +79,13 @@ protected:
 
 
 /** Unpitched generator base class. */
-class UnpitchedGenerator : public _GeneratorBase {
+class _UnpitchedGenerator : public _GeneratorBase {
 public:
     /** Default constructor. */
-    UnpitchedGenerator() = default;
+    _UnpitchedGenerator() = default;
 
     /** Default destructor. */
-    ~UnpitchedGenerator() = default;
+    ~_UnpitchedGenerator() = default;
 
     /** Generate method.
      * Returns a zero-filled vector of length `n`.

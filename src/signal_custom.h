@@ -4,7 +4,7 @@
 #include "base_classes.h"
 
 /** Class for making custom signal generator. */
-class CustomGenerator : public PitchedGenerator {
+class SignalGenerator : public _PitchedGenerator {
 public:
     /** Constructor.
      * @param sample_rate sample rate of the generator.
@@ -12,7 +12,7 @@ public:
      * @param phaseMin minimum phase to pass as input to `expr`. Default 0.
      * @param phaseMax maximum phase to pass as input to `expr`. Default 1.
      */
-    CustomGenerator(
+    SignalGenerator(
         const float_t sample_rate,
         std::function<float_t(float_t)> expr,
         float_t phaseMin = 0.0,
@@ -20,7 +20,7 @@ public:
     );
 
     /** Default destructor. */
-    ~CustomGenerator() = default;
+    ~SignalGenerator() = default;
 };
 
 #endif

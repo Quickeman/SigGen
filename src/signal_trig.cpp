@@ -1,11 +1,11 @@
-#include "trig_signals.h"
+#include "signal_trig.h"
 
 #include "functions.h"
 
 using namespace std;
 
 TrigGenerator::TrigGenerator(const float_t sample_rate): 
-    PitchedGenerator(sample_rate) {
+    _PitchedGenerator(sample_rate) {
     phase.setRange(0.0, 2.0 * M_PI);
 }
 
