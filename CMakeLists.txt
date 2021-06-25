@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.2)
 # Project name
 project(SigGen)
 
-string(TOLOWER ${CMAKE_PROJECT_NAME} LIB_NAME)
+string(TOLOWER ${PROJECT_NAME} LIB_NAME)
 
 # Generate compile_commands.json for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
