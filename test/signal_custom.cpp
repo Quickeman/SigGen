@@ -16,6 +16,7 @@ int main() {
 
     float_t pMin = -1.0;
     float_t pMax = 1.0;
+    float_t pRange = pMax - pMin;
 
     SignalGenerator gen(sr, lambda, pMin, pMax);
 
@@ -31,6 +32,7 @@ int main() {
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
         ph += 0.2;
+        if (ph >= pMax) ph -= pRange;
         expt = lambda(ph);
     }
 }

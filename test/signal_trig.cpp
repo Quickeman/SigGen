@@ -9,7 +9,7 @@ using namespace test;
 int main() {
     float_t sr = 5.0;
     float_t freq = 1.0;
-    size_t bl = sr + 1e-6;
+    size_t bl = 2.0 * sr + 1e-6;
     std::vector<float_t> resA;
     std::vector<float_t> resF;
     float_t expt;
@@ -44,7 +44,7 @@ int main() {
     expt = cos(inPh);
     for (int i = 0; i < bl; i++) {
         check(
-            maths::isNear(resA[i], expt),
+            maths::isNear(resA[i], expt, (float_t)1e-5),
             "Cosine: unexpected value " + std::to_string(resA[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
