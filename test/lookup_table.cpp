@@ -20,7 +20,7 @@ int main() {
     float_t expt = gen(in);
     for (int i = 0; i < len; i++) {
         test::check(
-            maths::isNear(tab[i], expt),
+            tab[i], expt, 1e-6f,
             "Unexpected value " + std::to_string(tab[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );

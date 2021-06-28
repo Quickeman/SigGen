@@ -20,7 +20,7 @@ int main() {
     expt = -1.0;
     for (int i = 0; i < bl; i++) {
         check(
-            maths::isNear(res[i], expt),
+            res[i], expt, 1e-6f,
             "Sawtooth: unexpected value " + std::to_string(res[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
@@ -35,7 +35,7 @@ int main() {
         expt = -1.0;
         if ((i % sri) > 2) expt = 1.0;
         check(
-            maths::isNear(res[i], expt),
+            res[i], expt, 1e-6f,
             "Square: unexpected value " + std::to_string(res[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
@@ -49,7 +49,7 @@ int main() {
         expt = -1.0;
         if ((i % sri) > 2) expt = 1.0;
         check(
-            maths::isNear(res[i], expt),
+            res[i], expt, 1e-6f,
             "Rectangle (pw=0.5): unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
         );
     }
@@ -62,7 +62,7 @@ int main() {
         expt = -1.0;
         if ((i % sri) > 0) expt = 1.0;
         check(
-            maths::isNear(res[i], expt),
+            res[i], expt, 1e-6f,
             "Rectangle (pw=0.1): unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
         );
     }
@@ -73,7 +73,7 @@ int main() {
     expt = -1.0;
     for (int i = 0; i < bl; i++) {
         check(
-            maths::isNear(res[i], expt),
+            res[i], expt, 1e-6f,
             "Triangle: unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
         );
         if ((i % sri) < 2) expt += 0.8;

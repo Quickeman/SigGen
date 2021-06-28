@@ -22,12 +22,12 @@ int main() {
     expt = sin(inPh);
     for (int i = 0; i < bl; i++) {
         check(
-            maths::isNear(resA[i], expt),
+            resA[i], expt, 1e-6f,
             "Sine: unexpected value " + std::to_string(resA[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
         check(
-            maths::isNear(resF[i], expt, (float_t)1e-3),
+            resF[i], expt, 1e-3f,
             "Sine approximation: unexpected value " + std::to_string(resF[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
@@ -44,12 +44,12 @@ int main() {
     expt = cos(inPh);
     for (int i = 0; i < bl; i++) {
         check(
-            maths::isNear(resA[i], expt, (float_t)1e-5),
+            resA[i], expt, 1e-5f,
             "Cosine: unexpected value " + std::to_string(resA[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
         check(
-            maths::isNear(resF[i], expt, (float_t)1e-3),
+            resF[i], expt, 1e-3f,
             "Cosine approximation: unexpected value " + std::to_string(resF[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );

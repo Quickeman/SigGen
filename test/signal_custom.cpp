@@ -27,7 +27,7 @@ int main() {
 
     for (int i = 0; i < bl; i++) {
         check(
-            maths::isNear(r[i], expt),
+            r[i], expt, 1e-6f,
             "Unexpected value " + std::to_string(r[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
