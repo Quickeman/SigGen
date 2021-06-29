@@ -12,9 +12,9 @@ public:
     ~_LookupTableBase() = default;
 
     /** Subscript operator overload. */
-    float_t& operator[](int i) { return table[i]; }
+    inline float_t& operator[](int i) { return table[i]; }
     /** Const subscript operator overload. */
-    const float_t& operator[](int i) const { return table[i]; }
+    inline const float_t& operator[](int i) const { return table[i]; }
 
 protected:
     /** The lookup table. */
