@@ -35,33 +35,43 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 ### UNIT TESTING ###
 
-# Enable `make test` command
-enable_testing()
+# Determine if unit tests should be compiled
+set(SIGGEN_ENABLE_TESTS TRUE)
+if(DEFINED DISABLE_TESTS)
+    if(DISABLE_TESTS)
+        set(SIGGEN_ENABLE_TESTS FALSE)
+    endif()
+endif()
 
-# Enable test output on failure
-set(CTEST_OUTPUT_ON_FAILURE TRUE)
+if(SIGGEN_ENABLE_TESTS)
+    # Enable `make test` command
+    enable_testing()
 
-# Make sure the compiler looks in the src directory
-include_directories(${PROJECT_SOURCE_DIR}/src)
-include_directories(${PROJECT_SOURCE_DIR}/test/framework)
+    # Enable test output on failure
+    set(CTEST_OUTPUT_ON_FAILURE TRUE)
 
-# Include test files
-file(GLOB TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
-# Run through each test file
-foreach(testSrc ${TEST_SRCS})
-    # Get extension-less file name
-    get_filename_component(testName ${testSrc} NAME_WE)
-    # Add target
-    add_executable(${testName} ${testSrc})
-    # Link to source code
-    target_link_libraries(${testName} ${LIB_NAME})
-    # Put test executables in their own directory
-    set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin)
+    # Make sure the compiler looks in the src directory
+    include_directories(${PROJECT_SOURCE_DIR}/src)
+    include_directories(${PROJECT_SOURCE_DIR}/test/framework)
 
-    # Add test to CTest execution
-    add_test(
-        NAME ${testName}
-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin
-        COMMAND ${testName}
-    )
-endforeach(testSrc)
+    # Include test files
+    file(GLOB TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
+    # Run through each test file
+    foreach(testSrc ${TEST_SRCS})
+        # Get extension-less file name
+        get_filename_component(testName ${testSrc} NAME_WE)
+        # Add target
+        add_executable(${testName} ${testSrc})
+        # Link to source code
+        target_link_libraries(${testName} ${LIB_NAME})
+        # Put test executables in their own directory
+        set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin)
+
+        # Add test to CTest execution
+        add_test(
+            NAME ${testName}
+            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin
+            COMMAND ${testName}
+        )
+    endforeach(testSrc)
+endif()
