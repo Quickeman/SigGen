@@ -41,7 +41,7 @@ public:
      * @param n buffer size.
      * @param f frequency/pitch to generate.
      */
-    virtual std::vector<float_t> generate(size_t n, float_t f);
+    virtual std::vector<float_t>& generate(size_t n, float_t f);
 
     /** Resets the phase to the zero point.
      * To set a different zero-phase point in a derived class, set 
@@ -52,6 +52,9 @@ public:
 protected:
     /** The sample rate. */
     float_t sRate;
+
+    /** Object-lifetime vector for returning by reference. */
+    std::vector<float_t> returnVector;
 
     /** Data concerning the signal's phase. */
     struct _PhaseData {
@@ -90,7 +93,14 @@ public:
     /** Generate method.
      * Returns a zero-filled vector of length `n`.
      */
-    virtual std::vector<float_t> generate(size_t n) { return std::vector<float_t>(n); }
+    virtual std::vector<float_t>& generate(size_t n) {
+        if (returnVector.size() != n) returnVector.resize(n);
+        return returnVector;
+    }
+
+protected:
+    /** Object-lifetime vector for returning by reference. */
+    std::vector<float_t> returnVector;
 };
 
 #endif
