@@ -8,8 +8,8 @@ string(TOLOWER ${PROJECT_NAME} LIB_NAME)
 # Generate compile_commands.json for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Request C++ 11 standard features
-set(CMAKE_CXX_STANDARD 11)
+# Request C++ 14 standard features
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Make sure the compiler looks here for source files

@@ -23,6 +23,9 @@ protected:
      * functions may work as well.
      */
     std::function<float_t(float_t)> generator;
+
+    /** Object-lifetime vector for returning by reference. */
+    std::vector<float_t> returnVector;
 };
 
 
@@ -52,9 +55,6 @@ public:
 protected:
     /** The sample rate. */
     float_t sRate;
-
-    /** Object-lifetime vector for returning by reference. */
-    std::vector<float_t> returnVector;
 
     /** Data concerning the signal's phase. */
     struct _PhaseData {
@@ -97,10 +97,6 @@ public:
         if (returnVector.size() != n) returnVector.resize(n);
         return returnVector;
     }
-
-protected:
-    /** Object-lifetime vector for returning by reference. */
-    std::vector<float_t> returnVector;
 };
 
 #endif
