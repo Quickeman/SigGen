@@ -13,26 +13,23 @@ static constexpr float_t max32f = float_t(((long int)1 << 32) - 1);
 /** Base class for noise (random sample) generators. */
 class _NoiseGenerator : public _UnpitchedGenerator {
 public:
-    /** Default constructor. */
+    /** Constructor. */
     _NoiseGenerator();
-
-    /** Constructor that specifies a generator expression. */
-    _NoiseGenerator(std::function<float_t()> expr);
 
     /** Default destructor. */
     ~_NoiseGenerator() = default;
 
-    /** Get a random number in range [0, 1). */
-    inline float_t uniform() { return float_t(engine()) / max32f; }
-
 protected:
-    /** Generator expression for noise. */
-    std::function<float_t()> generator;
+    /** Get a random number in range [-1, 1). */
+    inline float_t uniform() { return dist(*engine.get()); }
 
+private:
     /** Random device to obtain a seed for the engine. */
     std::random_device rd;
     /** Random number generator engine. */
-    std::mt19937 engine;
+    std::unique_ptr<std::mt19937> engine;
+    /** Distribution for generated numbers. */
+    std::uniform_real_distribution<float_t> dist;
 };
 
 

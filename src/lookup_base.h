@@ -19,6 +19,9 @@ public:
 protected:
     /** The lookup table. */
     std::vector<float_t> table;
+
+    /** Generator expression. */
+    std::function<float_t(float_t)> generator;
 };
 
 #endif

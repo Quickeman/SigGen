@@ -21,3 +21,14 @@ vector<float_t>& _PitchedGenerator::generate(size_t n, float_t f) {
 
     return returnVector;
 }
+
+
+vector<float_t>& _UnpitchedGenerator::generate(size_t n) {
+    returnVector.resize(n);
+
+    for (int i = 0; i < n; i++) {
+        returnVector[i] = generator();
+    }
+
+    return returnVector;
+}

@@ -3,11 +3,10 @@
 #include "unit_test_framework.h"
 
 int main() {
-    size_t num = 10;
+    size_t num = 1000;
     std::vector<float_t> res;
 
     WhitenoiseGenerator wn;
-    res = wn.generate(10000000);
     res = wn.generate(num);
     for (int i = 0; i < num; i++) {
         test::check(

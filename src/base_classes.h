@@ -93,10 +93,14 @@ public:
     /** Generate method.
      * Returns a zero-filled vector of length `n`.
      */
-    virtual std::vector<float_t>& generate(size_t n) {
-        if (returnVector.size() != n) returnVector.resize(n);
-        return returnVector;
-    }
+    virtual std::vector<float_t>& generate(size_t n);
+
+protected:
+    /** Generator expression.
+     * Reommended to assign a lambda expression to this, though some raw
+     * functions may work as well.
+     */
+    std::function<float_t()> generator;
 };
 
 #endif

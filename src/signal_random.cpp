@@ -3,18 +3,14 @@
 using namespace std;
 
 _NoiseGenerator::_NoiseGenerator() {
-    engine.seed(rd());
-}
-
-_NoiseGenerator::_NoiseGenerator(function<float_t()> expr) {
-    engine.seed(rd());
-    generator = expr;
+    engine = make_unique<std::mt19937>(rd());
+    dist.param(uniform_real_distribution<float_t>::param_type(-1.0, 1.0));
 }
 
 
 WhitenoiseGenerator::WhitenoiseGenerator() {
     generator = [&]() {
-        return 2.0 * uniform() - 1.0;
+        return uniform();
     };
 }
 
@@ -26,10 +22,10 @@ PinknoiseGenerator::PinknoiseGenerator() {
         if (frame >= (1 << quality)) frame = 0;
         int diff = lastFrame ^ frame;
 
-        float sum = 0.f;
+        float_t sum = 0.0;
         for (int i = 0; i < quality; i++) {
             if(diff & (1 << i)) {
-                values[i] = uniform() - 0.5;
+                values[i] = 0.5 * uniform();
             }
             sum += values[i];
         }
