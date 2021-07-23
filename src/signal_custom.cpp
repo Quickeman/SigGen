@@ -3,10 +3,10 @@
 using namespace std;
 
 SignalGenerator::SignalGenerator(
-    const float_t sample_rate,
-    function<float_t(float_t)> expr,
-    float_t phaseMin,
-    float_t phaseMax):
+    const fp_t sample_rate,
+    function<fp_t(fp_t)> expr,
+    fp_t phaseMin,
+    fp_t phaseMax):
     _PitchedGenerator(sample_rate) {
     generator = expr;
     phase.setRange(phaseMin, phaseMax);

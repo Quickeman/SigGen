@@ -8,19 +8,19 @@
 using namespace test;
 
 int main() {
-    float_t sr = 5.0;
+    fp_t sr = 5.0;
     int sri = sr + 1e-6;
-    float_t freq = 1.0;
+    fp_t freq = 1.0;
     size_t bl = 2.0 * sr + 1e-6;
-    std::vector<float_t> res;
-    float_t expt;
+    std::vector<fp_t> res;
+    fp_t expt;
 
     SawtoothGenerator saw(sr);
     res = saw.generate(bl, freq);
     expt = -1.0;
     for (int i = 0; i < bl; i++) {
         check(
-            res[i], expt, 1e-6f,
+            res[i], expt, (fp_t)1e-6,
             "Sawtooth: unexpected value " + std::to_string(res[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
@@ -35,7 +35,7 @@ int main() {
         expt = -1.0;
         if ((i % sri) > 2) expt = 1.0;
         check(
-            res[i], expt, 1e-6f,
+            res[i], expt, (fp_t)1e-6,
             "Square: unexpected value " + std::to_string(res[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
@@ -49,7 +49,7 @@ int main() {
         expt = -1.0;
         if ((i % sri) > 2) expt = 1.0;
         check(
-            res[i], expt, 1e-6f,
+            res[i], expt, (fp_t)1e-6,
             "Rectangle (pw=0.5): unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
         );
     }
@@ -62,7 +62,7 @@ int main() {
         expt = -1.0;
         if ((i % sri) > 0) expt = 1.0;
         check(
-            res[i], expt, 1e-6f,
+            res[i], expt, (fp_t)1e-6,
             "Rectangle (pw=0.1): unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
         );
     }
@@ -73,7 +73,7 @@ int main() {
     expt = -1.0;
     for (int i = 0; i < bl; i++) {
         check(
-            res[i], expt, 1e-6f,
+            res[i], expt, (fp_t)1e-6,
             "Triangle: unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
         );
         if ((i % sri) < 2) expt += 0.8;

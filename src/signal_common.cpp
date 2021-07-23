@@ -2,33 +2,33 @@
 
 #include "functions.h"
 
-SawtoothGenerator::SawtoothGenerator(const float_t sample_rate):
+SawtoothGenerator::SawtoothGenerator(const fp_t sample_rate):
     _PitchedGenerator(sample_rate) {
     phase.setRange(-1.0, 1.0);
-    generator = [&](float_t x) {
+    generator = [&](fp_t x) {
         return x;
     };
 }
 
-SquareGenerator::SquareGenerator(const float_t sample_rate):
+SquareGenerator::SquareGenerator(const fp_t sample_rate):
     _PitchedGenerator(sample_rate) {
     phase.setRange(-1.0, 1.0);
-    generator = [&](float_t x) {
+    generator = [&](fp_t x) {
         return maths::sign(x);
     };
 }
 
-RectangleGenerator::RectangleGenerator(const float_t sample_rate):
+RectangleGenerator::RectangleGenerator(const fp_t sample_rate):
     _PitchedGenerator(sample_rate) {
-    generator = [&](float_t x) {
+    generator = [&](fp_t x) {
         return (x > pWidth) ? 1.0 : -1.f;
     };
 }
 
-TriangleGenerator::TriangleGenerator(const float_t sample_rate):
+TriangleGenerator::TriangleGenerator(const fp_t sample_rate):
     _PitchedGenerator(sample_rate) {
     phase.setRange(-1.0, 1.0);
-    generator = [&](float_t x) {
+    generator = [&](fp_t x) {
         return 1.0 - (2.0 * abs(x));
     };
 }

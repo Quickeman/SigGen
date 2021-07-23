@@ -2,15 +2,15 @@
 
 using namespace std;
 
-_PitchedGenerator::_PitchedGenerator(const float_t sample_rate):
+_PitchedGenerator::_PitchedGenerator(const fp_t sample_rate):
     sRate(sample_rate) {
     phase.setRange(0.0, 1.0);
 }
 
-vector<float_t>& _PitchedGenerator::generate(size_t n, float_t f) {
+vector<fp_t>& _PitchedGenerator::generate(size_t n, fp_t f) {
     returnVector.resize(n);
 
-    float_t nf = phase.range * f / sRate;
+    fp_t nf = phase.range * f / sRate;
 
     for (int i = 0; i < n; i++) {
         returnVector[i] = generator(phase.x);
@@ -23,7 +23,7 @@ vector<float_t>& _PitchedGenerator::generate(size_t n, float_t f) {
 }
 
 
-vector<float_t>& _UnpitchedGenerator::generate(size_t n) {
+vector<fp_t>& _UnpitchedGenerator::generate(size_t n) {
     returnVector.resize(n);
 
     for (int i = 0; i < n; i++) {

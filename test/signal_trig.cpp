@@ -7,13 +7,13 @@
 using namespace test;
 
 int main() {
-    float_t sr = 5.0;
-    float_t freq = 1.0;
+    fp_t sr = 5.0;
+    fp_t freq = 1.0;
     size_t bl = 2.0 * sr + 1e-6;
-    std::vector<float_t> resA;
-    std::vector<float_t> resF;
-    float_t expt;
-    float_t inPh = 0.0;
+    std::vector<fp_t> resA;
+    std::vector<fp_t> resF;
+    fp_t expt;
+    fp_t inPh = 0.0;
 
     SineGenerator sg(sr);
     FastSineGenerator fsg(sr);
@@ -22,12 +22,12 @@ int main() {
     expt = sin(inPh);
     for (int i = 0; i < bl; i++) {
         check(
-            resA[i], expt, 1e-6f,
+            resA[i], expt, (fp_t)1e-6,
             "Sine: unexpected value " + std::to_string(resA[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
         check(
-            resF[i], expt, 1e-3f,
+            resF[i], expt, (fp_t)1e-3,
             "Sine approximation: unexpected value " + std::to_string(resF[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
@@ -44,12 +44,12 @@ int main() {
     expt = cos(inPh);
     for (int i = 0; i < bl; i++) {
         check(
-            resA[i], expt, 1e-5f,
+            resA[i], expt, (fp_t)1e-5,
             "Cosine: unexpected value " + std::to_string(resA[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );
         check(
-            resF[i], expt, 1e-3f,
+            resF[i], expt, (fp_t)1e-3,
             "Cosine approximation: unexpected value " + std::to_string(resF[i]) + " at index "
             + std::to_string(i) + ", expected " + std::to_string(expt)
         );

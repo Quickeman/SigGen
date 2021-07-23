@@ -10,14 +10,14 @@
 class TrigGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
-    TrigGenerator(const float_t sample_rate);
+    TrigGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~TrigGenerator() = default;
 
 protected:
     /** 2 * pi */
-    static constexpr float_t twopi = 2.f * (float_t)M_PI;
+    static constexpr fp_t twopi = 2.f * (fp_t)M_PI;
 };
 
 
@@ -25,7 +25,7 @@ protected:
 class SineGenerator : public TrigGenerator {
 public:
     /** Default constructor */
-    SineGenerator(const float_t sample_rate);
+    SineGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~SineGenerator() = default;
@@ -35,7 +35,7 @@ public:
 class FastSineGenerator : public TrigGenerator {
 public:
     /** Default constructor */
-    FastSineGenerator(const float_t sample_rate);
+    FastSineGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~FastSineGenerator() = default;
@@ -46,7 +46,7 @@ public:
 class CosineGenerator : public TrigGenerator {
 public:
     /** Default constructor */
-    CosineGenerator(const float_t sample_rate);
+    CosineGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~CosineGenerator() = default;
@@ -56,7 +56,7 @@ public:
 class FastCosineGenerator : public TrigGenerator {
 public:
     /** Default constructor */
-    FastCosineGenerator(const float_t sample_rate);
+    FastCosineGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~FastCosineGenerator() = default;

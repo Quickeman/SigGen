@@ -4,7 +4,7 @@
 #include <vector>
 #include <functional>
 
-typedef float float_t;
+typedef float fp_t;
 
 /** Signal generation base class.
  * All signal generators inherit from this class.
@@ -22,10 +22,10 @@ protected:
      * Reommended to assign a lambda expression to this, though some raw
      * functions may work as well.
      */
-    std::function<float_t(float_t)> generator;
+    std::function<fp_t(fp_t)> generator;
 
     /** Object-lifetime vector for returning by reference. */
-    std::vector<float_t> returnVector;
+    std::vector<fp_t> returnVector;
 };
 
 
@@ -35,7 +35,7 @@ public:
     /** Constructor.
      * @param sample_rate sample rate.
      */
-    _PitchedGenerator(const float_t sample_rate);
+    _PitchedGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~_PitchedGenerator() = default;
@@ -44,7 +44,7 @@ public:
      * @param n buffer size.
      * @param f frequency/pitch to generate.
      */
-    virtual std::vector<float_t>& generate(size_t n, float_t f);
+    virtual std::vector<fp_t>& generate(size_t n, fp_t f);
 
     /** Resets the phase to the zero point.
      * To set a different zero-phase point in a derived class, set 
@@ -54,20 +54,20 @@ public:
 
 protected:
     /** The sample rate. */
-    float_t sRate;
+    fp_t sRate;
 
     /** Data concerning the signal's phase. */
     struct _PhaseData {
         /** The minimum/origin phase. */
-        float_t min = 0.0;
+        fp_t min = 0.0;
         /** The maximum phase. */
-        float_t max = 1.0;
+        fp_t max = 1.0;
         /** The phase range; max - min. */
-        float_t range = max - min;
+        fp_t range = max - min;
         /** The phase. */
-        float_t x = min;
+        fp_t x = min;
         /** Set the phase range. */
-        void setRange(float_t min, float_t max) {
+        void setRange(fp_t min, fp_t max) {
             this->min = min;
             this->max = max;
             range = max - min;
@@ -93,14 +93,14 @@ public:
     /** Generate method.
      * Returns a zero-filled vector of length `n`.
      */
-    virtual std::vector<float_t>& generate(size_t n);
+    virtual std::vector<fp_t>& generate(size_t n);
 
 protected:
     /** Generator expression.
      * Reommended to assign a lambda expression to this, though some raw
      * functions may work as well.
      */
-    std::function<float_t()> generator;
+    std::function<fp_t()> generator;
 };
 
 #endif

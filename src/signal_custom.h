@@ -13,10 +13,10 @@ public:
      * @param phaseMax maximum phase to pass as input to `expr`. Default 1.
      */
     SignalGenerator(
-        const float_t sample_rate,
-        std::function<float_t(float_t)> expr,
-        float_t phaseMin = 0.0,
-        float_t phaseMax = 1.0
+        const fp_t sample_rate,
+        std::function<fp_t(fp_t)> expr,
+        fp_t phaseMin = 0.0,
+        fp_t phaseMax = 1.0
     );
 
     /** Default destructor. */

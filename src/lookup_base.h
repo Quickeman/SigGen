@@ -12,16 +12,16 @@ public:
     ~_LookupTableBase() = default;
 
     /** Subscript operator overload. */
-    inline float_t& operator[](int i) { return table[i]; }
+    inline fp_t& operator[](int i) { return table[i]; }
     /** Const subscript operator overload. */
-    inline const float_t& operator[](int i) const { return table[i]; }
+    inline const fp_t& operator[](int i) const { return table[i]; }
 
 protected:
     /** The lookup table. */
-    std::vector<float_t> table;
+    std::vector<fp_t> table;
 
     /** Generator expression. */
-    std::function<float_t(float_t)> generator;
+    std::function<fp_t(fp_t)> generator;
 };
 
 #endif

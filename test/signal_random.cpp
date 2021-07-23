@@ -4,7 +4,7 @@
 
 int main() {
     size_t num = 1000;
-    std::vector<float_t> res;
+    std::vector<fp_t> res;
 
     WhitenoiseGenerator wn;
     res = wn.generate(num);

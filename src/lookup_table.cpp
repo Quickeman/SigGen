@@ -2,21 +2,21 @@
 
 using namespace std;
 
-LookupTable::LookupTable(size_t n, function<float_t(float_t)> expr, float_t min, float_t max) {
+LookupTable::LookupTable(size_t n, function<fp_t(fp_t)> expr, fp_t min, fp_t max) {
     generate(n, expr, min, max);
 }
 
-void LookupTable::generate(size_t n, function<float_t(float_t)> expr, float_t min, float_t max) {
+void LookupTable::generate(size_t n, function<fp_t(fp_t)> expr, fp_t min, fp_t max) {
     if (table.size()) table.clear();
     table.resize(n);
 
     generator = expr;
 
-    float_t inc;
-    float_t x;
+    fp_t inc;
+    fp_t x;
 
     if (n > 1) {
-        inc = (max - min) / float_t(n - 1);
+        inc = (max - min) / fp_t(n - 1);
         x = min;
     }
     else {

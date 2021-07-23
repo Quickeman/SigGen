@@ -7,7 +7,7 @@
 class SawtoothGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
-    SawtoothGenerator(const float_t sample_rate);
+    SawtoothGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~SawtoothGenerator() = default;
@@ -18,7 +18,7 @@ public:
 class SquareGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
-    SquareGenerator(const float_t sample_rate);
+    SquareGenerator(const fp_t sample_rate);
 
     /** Default constructor. */
     ~SquareGenerator() = default;
@@ -29,20 +29,20 @@ public:
 class RectangleGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
-    RectangleGenerator(const float_t sample_rate);
+    RectangleGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~RectangleGenerator() = default;
 
     /** Set the pulse width [0:1]. */
-    inline void pulseWidth(float_t pw) { pWidth = pw; }
+    inline void pulseWidth(fp_t pw) { pWidth = pw; }
 
     /** Get the pulse width [0:1]. */
-    inline float_t pulseWidth() { return pWidth; }
+    inline fp_t pulseWidth() { return pWidth; }
 
 private:
     /** The pulse width. */
-    float_t pWidth;
+    fp_t pWidth;
 };
 
 
@@ -50,7 +50,7 @@ private:
 class TriangleGenerator : public _PitchedGenerator {
 public:
     /** Default constructor. */
-    TriangleGenerator(const float_t sample_rate);
+    TriangleGenerator(const fp_t sample_rate);
 
     /** Default destructor. */
     ~TriangleGenerator() = default;

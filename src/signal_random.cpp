@@ -4,7 +4,7 @@ using namespace std;
 
 _NoiseGenerator::_NoiseGenerator() {
     engine = make_unique<std::mt19937>(rd());
-    dist.param(uniform_real_distribution<float_t>::param_type(-1.0, 1.0));
+    dist.param(uniform_real_distribution<fp_t>::param_type(-1.0, 1.0));
 }
 
 
@@ -22,7 +22,7 @@ PinknoiseGenerator::PinknoiseGenerator() {
         if (frame >= (1 << quality)) frame = 0;
         int diff = lastFrame ^ frame;
 
-        float_t sum = 0.0;
+        fp_t sum = 0.0;
         for (int i = 0; i < quality; i++) {
             if(diff & (1 << i)) {
                 values[i] = 0.5 * uniform();

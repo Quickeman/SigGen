@@ -15,11 +15,11 @@ public:
      * Generates the lookup table from the specified table length, generator
      * expression and input range.
      * @param n length of the table to generate.
-     * @param expr generator expression. Must have footprint float_t(float_t).
+     * @param expr generator expression. Must have footprint fp_t(fp_t).
      * @param min minimum value to pass as input.
      * @param max maximum value to pass as input.
      */
-    LookupTable(size_t n, std::function<float_t(float_t)> expr, float_t min, float_t max);
+    LookupTable(size_t n, std::function<fp_t(fp_t)> expr, fp_t min, fp_t max);
 
     /** Default destructor. */
     ~LookupTable() = default;
@@ -29,11 +29,11 @@ public:
      * You don't need to call this if you called the constructor that takes
      * the same arguments as this method.
      * @param n Length of the table to generate.
-     * @param expr generator expression. Must have footprint float_t(float_t).
+     * @param expr generator expression. Must have footprint fp_t(fp_t).
      * @param min minimum value to pass as input.
      * @param max maximum value to pass as input.
      */
-    void generate(size_t n, std::function<float_t(float_t)> expr, float_t min, float_t max);
+    void generate(size_t n, std::function<fp_t(fp_t)> expr, fp_t min, fp_t max);
 };
 
 #endif

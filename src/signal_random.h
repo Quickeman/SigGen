@@ -8,7 +8,7 @@
 #include <array>
 
 /** Maximum value of a 32-bit integer, as a float. */
-static constexpr float_t max32f = float_t(((long int)1 << 32) - 1);
+static constexpr fp_t max32f = fp_t(((long int)1 << 32) - 1);
 
 /** Base class for noise (random sample) generators. */
 class _NoiseGenerator : public _UnpitchedGenerator {
@@ -21,7 +21,7 @@ public:
 
 protected:
     /** Get a random number in range [-1, 1). */
-    inline float_t uniform() { return dist(*engine.get()); }
+    inline fp_t uniform() { return dist(*engine.get()); }
 
 private:
     /** Random device to obtain a seed for the engine. */
@@ -29,7 +29,7 @@ private:
     /** Random number generator engine. */
     std::unique_ptr<std::mt19937> engine;
     /** Distribution for generated numbers. */
-    std::uniform_real_distribution<float_t> dist;
+    std::uniform_real_distribution<fp_t> dist;
 };
 
 
@@ -60,7 +60,7 @@ public:
 private:
     static constexpr int quality = 8;
     int frame;
-    std::array<float_t, quality> values;
+    std::array<fp_t, quality> values;
 };
 
 #endif
