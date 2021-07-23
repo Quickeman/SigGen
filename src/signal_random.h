@@ -63,17 +63,4 @@ private:
     std::array<float_t, quality> values;
 };
 
-
-// /** Brown noise generator.
-//  * White noise filtered with -6dB/oct LP filter.
-//  */
-// class BrownnoiseGenerator : public _NoiseGenerator {
-// public:
-//     /** Constructor. */
-//     BrownnoiseGenerator();
-
-//     /** Default constructor. */
-//     ~BrownnoiseGenerator() = default;
-// };
-
 #endif
