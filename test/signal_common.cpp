@@ -19,11 +19,7 @@ int main() {
     res = saw.generate(bl, freq);
     expt = -1.0;
     for (int i = 0; i < bl; i++) {
-        check(
-            res[i], expt, (fp_t)1e-6,
-            "Sawtooth: unexpected value " + std::to_string(res[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
+        check(res[i], expt);
         expt += 0.4;
         if (expt >= 0.9) expt -= 2.0;
     }
@@ -34,11 +30,7 @@ int main() {
     for (int i = 0; i < bl; i++) {
         expt = -1.0;
         if ((i % sri) > 2) expt = 1.0;
-        check(
-            res[i], expt, (fp_t)1e-6,
-            "Square: unexpected value " + std::to_string(res[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
+        check(res[i], expt);
     }
 
 
@@ -48,10 +40,7 @@ int main() {
     for (int i = 0; i < bl; i++) {
         expt = -1.0;
         if ((i % sri) > 2) expt = 1.0;
-        check(
-            res[i], expt, (fp_t)1e-6,
-            "Rectangle (pw=0.5): unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
-        );
+        check(res[i], expt);
     }
 
     rec.resetPhase();
@@ -61,10 +50,7 @@ int main() {
     for (int i = 0; i < bl; i++) {
         expt = -1.0;
         if ((i % sri) > 0) expt = 1.0;
-        check(
-            res[i], expt, (fp_t)1e-6,
-            "Rectangle (pw=0.1): unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
-        );
+        check(res[i], expt);
     }
 
 
@@ -72,10 +58,7 @@ int main() {
     res = tri.generate(bl, freq);
     expt = -1.0;
     for (int i = 0; i < bl; i++) {
-        check(
-            res[i], expt, (fp_t)1e-6,
-            "Triangle: unexpected value " + std::to_string(res[i]) + " at index " + std::to_string(i)
-        );
+        check(res[i], expt);
         if ((i % sri) < 2) expt += 0.8;
         if ((i % sri) == 2) expt = 0.6;
         if ((i % sri) > 2) expt -= 0.8;

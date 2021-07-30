@@ -19,11 +19,7 @@ int main() {
     fp_t in = minVal;
     fp_t expt = gen(in);
     for (int i = 0; i < len; i++) {
-        test::check(
-            tab[i], expt, (fp_t)1e-6,
-            "Unexpected value " + std::to_string(tab[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
+        test::check(tab[i], expt);
         in += 0.01;
         expt = gen(in);
     }

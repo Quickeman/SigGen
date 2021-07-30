@@ -21,16 +21,8 @@ int main() {
     resF = fsg.generate(bl, freq);
     expt = sin(inPh);
     for (int i = 0; i < bl; i++) {
-        check(
-            resA[i], expt, (fp_t)1e-6,
-            "Sine: unexpected value " + std::to_string(resA[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
-        check(
-            resF[i], expt, (fp_t)1e-3,
-            "Sine approximation: unexpected value " + std::to_string(resF[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
+        check(resA[i], expt);
+        check(resF[i], expt, (fp_t)1e-3);
         inPh += 0.4 * M_PI;
         expt = sin(inPh);
     }
@@ -43,16 +35,8 @@ int main() {
     inPh = 0.0;
     expt = cos(inPh);
     for (int i = 0; i < bl; i++) {
-        check(
-            resA[i], expt, (fp_t)1e-5,
-            "Cosine: unexpected value " + std::to_string(resA[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
-        check(
-            resF[i], expt, (fp_t)1e-3,
-            "Cosine approximation: unexpected value " + std::to_string(resF[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
+        check(resA[i], expt, (fp_t)1e-5);
+        check(resF[i], expt, (fp_t)1e-3);
         inPh += 0.4 * M_PI;
         expt = cos(inPh);
     }

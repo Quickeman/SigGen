@@ -26,11 +26,7 @@ int main() {
     fp_t expt = lambda(ph);
 
     for (int i = 0; i < bl; i++) {
-        check(
-            r[i], expt, (fp_t)1e-6,
-            "Unexpected value " + std::to_string(r[i]) + " at index "
-            + std::to_string(i) + ", expected " + std::to_string(expt)
-        );
+        check(r[i], expt);
         ph += 0.2;
         if (ph >= pMax) ph -= pRange;
         expt = lambda(ph);
