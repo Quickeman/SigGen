@@ -7,9 +7,6 @@
 #include <memory>
 #include <array>
 
-/** Maximum value of a 32-bit integer, as a float. */
-static constexpr fp_t max32f = fp_t(((long int)1 << 32) - 1);
-
 /** Base class for noise (random sample) generators. */
 class _NoiseGenerator : public _UnpitchedGenerator {
 public:

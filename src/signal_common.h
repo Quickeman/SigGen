@@ -35,7 +35,7 @@ public:
     ~RectangleGenerator() = default;
 
     /** Set the pulse width [0:1]. */
-    inline void pulseWidth(fp_t pw) { pWidth = pw; }
+    inline void pulseWidth(const fp_t pw) { pWidth = pw; }
 
     /** Get the pulse width [0:1]. */
     inline fp_t pulseWidth() { return pWidth; }

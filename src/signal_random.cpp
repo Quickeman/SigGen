@@ -17,10 +17,10 @@ WhitenoiseGenerator::WhitenoiseGenerator() {
 
 PinknoiseGenerator::PinknoiseGenerator() {
     generator = [&]() {
-        int lastFrame = frame;
+        const int lastFrame = frame;
         frame++;
         if (frame >= (1 << quality)) frame = 0;
-        int diff = lastFrame ^ frame;
+        const int diff = lastFrame ^ frame;
 
         fp_t sum = 0.0;
         for (int i = 0; i < quality; i++) {

@@ -19,7 +19,12 @@ public:
      * @param min minimum value to pass as input.
      * @param max maximum value to pass as input.
      */
-    LookupTable(size_t n, std::function<fp_t(fp_t)> expr, fp_t min, fp_t max);
+    LookupTable(
+        const size_t n,
+        const std::function<fp_t(fp_t)> expr,
+        const fp_t min,
+        const fp_t max
+    );
 
     /** Default destructor. */
     ~LookupTable() = default;
@@ -33,7 +38,12 @@ public:
      * @param min minimum value to pass as input.
      * @param max maximum value to pass as input.
      */
-    void generate(size_t n, std::function<fp_t(fp_t)> expr, fp_t min, fp_t max);
+    void generate(
+        const size_t n,
+        const std::function<fp_t(fp_t)> expr,
+        const fp_t min,
+        const fp_t max
+    );
 };
 
 #endif

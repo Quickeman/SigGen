@@ -22,7 +22,7 @@ protected:
      * Reommended to assign a lambda expression to this, though some raw
      * functions may work as well.
      */
-    std::function<fp_t(fp_t)> generator;
+    std::function<fp_t(const fp_t)> generator;
 
     /** Object-lifetime vector for returning by reference. */
     std::vector<fp_t> returnVector;
@@ -44,7 +44,7 @@ public:
      * @param n buffer size.
      * @param f frequency/pitch to generate.
      */
-    virtual std::vector<fp_t>& generate(size_t n, fp_t f);
+    virtual std::vector<fp_t>& generate(const size_t n, const fp_t f);
 
     /** Resets the phase to the zero point.
      * To set a different zero-phase point in a derived class, set 
@@ -54,7 +54,7 @@ public:
 
 protected:
     /** The sample rate. */
-    fp_t sRate;
+    const fp_t sRate;
 
     /** Data concerning the signal's phase. */
     struct _PhaseData {
@@ -67,7 +67,7 @@ protected:
         /** The phase. */
         fp_t x = min;
         /** Set the phase range. */
-        void setRange(fp_t min, fp_t max) {
+        void setRange(const fp_t min, const fp_t max) {
             this->min = min;
             this->max = max;
             range = max - min;
@@ -93,7 +93,7 @@ public:
     /** Generate method.
      * Returns a zero-filled vector of length `n`.
      */
-    virtual std::vector<fp_t>& generate(size_t n);
+    virtual std::vector<fp_t>& generate(const size_t n);
 
 protected:
     /** Generator expression.

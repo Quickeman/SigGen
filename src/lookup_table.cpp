@@ -2,11 +2,11 @@
 
 using namespace std;
 
-LookupTable::LookupTable(size_t n, function<fp_t(fp_t)> expr, fp_t min, fp_t max) {
+LookupTable::LookupTable(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
     generate(n, expr, min, max);
 }
 
-void LookupTable::generate(size_t n, function<fp_t(fp_t)> expr, fp_t min, fp_t max) {
+void LookupTable::generate(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
     if (table.size()) table.clear();
     table.resize(n);
 

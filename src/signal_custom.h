@@ -14,9 +14,9 @@ public:
      */
     SignalGenerator(
         const fp_t sample_rate,
-        std::function<fp_t(fp_t)> expr,
-        fp_t phaseMin = 0.0,
-        fp_t phaseMax = 1.0
+        const std::function<fp_t(const fp_t)> expr,
+        const fp_t phaseMin = 0.0,
+        const fp_t phaseMax = 1.0
     );
 
     /** Default destructor. */
