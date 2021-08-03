@@ -7,8 +7,8 @@ LookupTable::LookupTable(const size_t n, const function<fp_t(fp_t)> expr, const 
 }
 
 void LookupTable::generate(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
-    if (table.size()) table.clear();
-    table.resize(n);
+    if (_table.size()) _table.clear();
+    _table.resize(n);
 
     generator = expr;
 
@@ -24,8 +24,8 @@ void LookupTable::generate(const size_t n, const function<fp_t(fp_t)> expr, cons
         x = (max - min) / 2.0;
     }
 
-    for (int i = 0; i < n; i++) {
-        table[i] = generator(x);
+    for (auto& v : _table) {
+        v = generator(x);
         x += inc;
     }
 }
