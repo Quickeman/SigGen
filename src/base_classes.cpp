@@ -12,8 +12,8 @@ vector<fp_t>& _PitchedGenerator::generate(const size_t n, const fp_t f) {
 
     const fp_t nf = phase.range * f / sRate;
 
-    for (int i = 0; i < n; i++) {
-        returnVector[i] = generator(phase.x);
+    for (auto& v : returnVector) {
+        v = generator(phase.x);
         phase.x += nf;
         if (phase.x >= phase.max) 
             phase.x -= phase.range;
@@ -26,8 +26,8 @@ vector<fp_t>& _PitchedGenerator::generate(const size_t n, const fp_t f) {
 vector<fp_t>& _UnpitchedGenerator::generate(const size_t n) {
     returnVector.resize(n);
 
-    for (int i = 0; i < n; i++) {
-        returnVector[i] = generator();
+    for (auto& v : returnVector) {
+        v = generator();
     }
 
     return returnVector;
