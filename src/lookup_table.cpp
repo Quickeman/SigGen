@@ -2,15 +2,14 @@
 
 using namespace std;
 
-LookupTable::LookupTable(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
+// class LookupTableLite
+
+LookupTableLite::LookupTableLite(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
     generate(n, expr, min, max);
 }
 
-void LookupTable::generate(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
-    if (_table.size()) _table.clear();
+void LookupTableLite::generate(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
     _table.resize(n);
-
-    generator = expr;
 
     fp_t inc;
     fp_t x;
@@ -25,7 +24,27 @@ void LookupTable::generate(const size_t n, const function<fp_t(fp_t)> expr, cons
     }
 
     for (auto& v : _table) {
-        v = generator(x);
+        v = expr(x);
         x += inc;
     }
+}
+
+
+// class LookupTable
+
+LookupTable::LookupTable(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
+    generate(n, expr, min, max);
+}
+
+void LookupTable::generate(const size_t n, const function<fp_t(fp_t)> expr, const fp_t min, const fp_t max) {
+    generator = expr;
+    setSize(n);
+
+    LookupTableLite::generate(n, expr, min, max);
+}
+
+void LookupTable::setSize(size_t size) {
+    std::get<size_t>(_size) = size;
+    std::get<fp_t>(_size) = size;
+    this->size<fp_t>();
 }

@@ -12,9 +12,10 @@ int main() {
     fp_t minVal = 0.0;
     fp_t maxVal = 1.0;
 
-    std::cout << "Creating table...\n";
     LookupTable tab(len, gen, minVal, maxVal);
-    std::cout << "Table created.\n";
+
+    test::check(tab.size<size_t>() == len);
+    test::check(tab.size<fp_t>(), fp_t(len));
 
     fp_t in = minVal;
     fp_t expt = gen(in);
