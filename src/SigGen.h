@@ -3,5 +3,6 @@
 
 #include "periodic.h"
 #include "lookup.h"
+#include "noise.h"
 
 #endif
