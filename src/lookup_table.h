@@ -110,15 +110,13 @@ public:
     template<typename T>
     const T size() { return static_cast<T>(std::get<size_t>(_size)); }
 
-    template<>
-    const fp_t size<>() { return std::get<fp_t>(_size); }
-    template<>
-    const size_t size<>() { return std::get<size_t>(_size); }
+    const size_t size_i() { return std::get<size_t>(_size); }
+    const fp_t size_f() { return std::get<fp_t>(_size); }
 
 private:
-    /** Tuple of the table's size in various types. */
+    /** Pair of the table's size in integer and float types. */
     std::pair<size_t, fp_t> _size;
-    /** Sets the @ref _size tuple's elements. */
+    /** Sets the @ref _size pair's elements. */
     void setSize(size_t size);
 
     /** Generator expression. */

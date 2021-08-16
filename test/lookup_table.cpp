@@ -14,8 +14,9 @@ int main() {
 
     LookupTable tab(len, gen, minVal, maxVal);
 
-    test::check(tab.size<size_t>() == len);
-    test::check(tab.size<fp_t>(), fp_t(len));
+    test::check(tab.size_i() == len);
+    test::check(tab.size_f(), fp_t(len));
+    test::check(tab.size<int>() == len);
 
     fp_t in = minVal;
     fp_t expt = gen(in);

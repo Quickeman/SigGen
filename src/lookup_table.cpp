@@ -44,7 +44,5 @@ void LookupTable::generate(const size_t n, const function<fp_t(fp_t)> expr, cons
 }
 
 void LookupTable::setSize(size_t size) {
-    std::get<size_t>(_size) = size;
-    std::get<fp_t>(_size) = size;
-    this->size<fp_t>();
+    _size = {size, size};
 }
