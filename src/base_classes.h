@@ -44,7 +44,7 @@ public:
      * @param n buffer size.
      * @param f frequency/pitch to generate.
      */
-    virtual std::vector<fp_t>& generate(const size_t n, const fp_t f);
+    std::vector<fp_t>& generate(const size_t n, const fp_t f);
 
     /** Resets the phase to the zero point.
      * To set a different zero-phase point in a derived class, set 
@@ -93,7 +93,7 @@ public:
     /** Generate method.
      * Returns a zero-filled vector of length `n`.
      */
-    virtual std::vector<fp_t>& generate(const size_t n);
+    std::vector<fp_t>& generate(const size_t n);
 
 protected:
     /** Generator expression.

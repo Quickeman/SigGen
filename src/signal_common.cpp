@@ -14,7 +14,7 @@ SquareGenerator::SquareGenerator(const fp_t sample_rate):
     _PitchedGenerator(sample_rate) {
     phase.setRange(-1.0, 1.0);
     generator = [](const fp_t x) {
-        return maths::sign(x);
+        return maths::sgn(x);
     };
 }
 

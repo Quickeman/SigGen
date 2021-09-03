@@ -16,6 +16,9 @@ WhitenoiseGenerator::WhitenoiseGenerator() {
 
 
 PinknoiseGenerator::PinknoiseGenerator() {
+    frame = 0;
+    values.fill(0);
+    
     generator = [&]() {
         const int lastFrame = frame;
         frame++;

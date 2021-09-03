@@ -8,6 +8,7 @@ namespace maths {
 
 /** Returns $x^n$. */
 template<typename T>
+constexpr
 T power(T x, unsigned int n) {
     T rv = 1;
 
@@ -19,6 +20,7 @@ T power(T x, unsigned int n) {
 
 /** Returns $x!$. */
 template<typename T>
+constexpr
 T factorial(T x) {
     T rv = 1;
     while (x > 0) {
@@ -32,6 +34,7 @@ T factorial(T x) {
  * Only accurate for -pi < x < pi.
  */
 template<typename T>
+constexpr
 T sinTaylor(T x) {
     return (
         x
@@ -47,6 +50,7 @@ T sinTaylor(T x) {
  * Slower than @ref sinTaylor but range-safe.
  */
 template<typename T>
+constexpr
 T sinTaylorSafe(T x) {
     constexpr T pi = M_PI;
     constexpr T twopi = pi + pi;
@@ -62,19 +66,16 @@ T sinTaylorSafe(T x) {
     return sinTaylor(x);
 }
 
-/** Get the sign of a number.
- * Returns 1 for +ve, -1 for -ve, 0 for 0.
- */
+/** Signum function. */
 template<typename T>
-T sign(T x) {
-    if (x == 0) {
-        return 0;
-    }
-    return (x > 0) ? 1 : -1;
+constexpr
+inline int sgn(const T& v) {
+    return (v > T(0)) - (v < T(0));
 }
 
 /** Determines if `a` is within `delta` range of `b`. */
 template<typename T>
+constexpr
 bool isNear(T a, T b, T delta = (T)1e-6) {
     return abs(a - b) <= delta;
 }
