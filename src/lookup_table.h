@@ -4,6 +4,7 @@
 #include "base_classes.h"
 
 #include <tuple>
+#include <type_traits>
 
 /** Lookup table generator for when low memory use is a priority. */
 class LookupTableLite : public _UnpitchedGenerator {
@@ -103,15 +104,19 @@ public:
         const fp_t max
     );
 
-    /** @return the size of the table as type `T`.
-     * @note only types size_t and @ref fp_t are readily available; all types
-     * can be returned but others may have additional type-conversion overhead.
-     */
-    template<typename T>
-    const T size() { return static_cast<T>(std::get<size_t>(_size)); }
+    /** @return the size of the table as type `T`. */
+    template<typename T,
+        std::enable_if_t<std::is_integral<T>::value, bool> = true>
+    const T size() {
+        return static_cast<T>(std::get<size_t>(_size));
+    }
 
-    const size_t size_i() { return std::get<size_t>(_size); }
-    const fp_t size_f() { return std::get<fp_t>(_size); }
+    /** @return the size of the table as type `T`. */
+    template<typename T,
+        std::enable_if_t<std::is_floating_point<T>::value, bool> = true>
+    const T size() {
+        return static_cast<T>(std::get<fp_t>(_size));
+    }
 
 private:
     /** Pair of the table's size in integer and float types. */
