@@ -62,7 +62,9 @@ if(SIGGEN_ENABLE_TESTS)
     # Run through each test file
     foreach(testSrc ${TEST_SRCS})
         # Get extension-less file name
-        get_filename_component(testName ${testSrc} NAME_WE)
+        get_filename_component(testFileName ${testSrc} NAME_WE)
+        # Make test name
+        set(testName ${PROJECT_NAME}_test_${testFileName})
         # Add target
         add_executable(${testName} ${testSrc})
         # Link to source code
