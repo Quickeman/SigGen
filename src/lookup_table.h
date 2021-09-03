@@ -104,6 +104,11 @@ public:
         const fp_t max
     );
 
+    /** @return the size of the table. */
+    const size_t size() {
+        return std::get<size_t>(_size);
+    }
+
     /** @return the size of the table as type `T`. */
     template<typename T,
         std::enable_if_t<std::is_integral<T>::value, bool> = true>
