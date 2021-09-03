@@ -13,8 +13,10 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Make sure the compiler looks here for source files
-include_directories(/usr/local/include)
-link_directories(/usr/local/lib)
+if (UNIX)
+    include_directories(/usr/local/include)
+    link_directories(/usr/local/lib)
+endif()
 
 
 ### SOURCE CODE ###
@@ -38,45 +40,35 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 ### UNIT TESTING ###
 
-# Determine if unit tests should be compiled
-set(SIGGEN_ENABLE_TESTS TRUE)
-if(DEFINED DISABLE_TESTS)
-    if(DISABLE_TESTS)
-        set(SIGGEN_ENABLE_TESTS FALSE)
-    endif()
-endif()
+# Enable `make test` command
+enable_testing()
 
-if(SIGGEN_ENABLE_TESTS)
-    # Enable `make test` command
-    enable_testing()
+# Enable test output on failure
+set(CTEST_OUTPUT_ON_FAILURE TRUE)
 
-    # Enable test output on failure
-    set(CTEST_OUTPUT_ON_FAILURE TRUE)
+# Make sure the compiler looks in the src directory
+include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/test/framework)
 
-    # Make sure the compiler looks in the src directory
-    include_directories(${PROJECT_SOURCE_DIR}/src)
-    include_directories(${PROJECT_SOURCE_DIR}/test/framework)
+# Include test files
+file(GLOB TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
+# Run through each test file
+foreach(testSrc ${TEST_SRCS})
+    # Get extension-less file name
+    get_filename_component(testFileName ${testSrc} NAME_WE)
+    # Make test name
+    set(testName ${PROJECT_NAME}_test_${testFileName})
+    # Add target
+    add_executable(${testName} ${testSrc})
+    # Link to source code
+    target_link_libraries(${testName} ${LIB_NAME})
+    # Put test executables in their own directory
+    set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin)
 
-    # Include test files
-    file(GLOB TEST_SRCS ${PROJECT_SOURCE_DIR}/test/*.cpp)
-    # Run through each test file
-    foreach(testSrc ${TEST_SRCS})
-        # Get extension-less file name
-        get_filename_component(testFileName ${testSrc} NAME_WE)
-        # Make test name
-        set(testName ${PROJECT_NAME}_test_${testFileName})
-        # Add target
-        add_executable(${testName} ${testSrc})
-        # Link to source code
-        target_link_libraries(${testName} ${LIB_NAME})
-        # Put test executables in their own directory
-        set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin)
-
-        # Add test to CTest execution
-        add_test(
-            NAME ${testName}
-            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin
-            COMMAND ${testName}
-        )
-    endforeach(testSrc)
-endif()
+    # Add test to CTest execution
+    add_test(
+        NAME ${testName}
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/test/bin
+        COMMAND ${testName}
+    )
+endforeach(testSrc)
