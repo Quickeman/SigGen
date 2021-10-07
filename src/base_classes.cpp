@@ -10,7 +10,7 @@ _PitchedGenerator::_PitchedGenerator(const fp_t sample_rate):
 vector<fp_t>& _PitchedGenerator::generate(const size_t n, const fp_t f) {
     returnVector.resize(n);
 
-    const fp_t nf = phase.range * f / sRate;
+    const fp_t nf { phase.range * f / sRate };
 
     for (auto& v : returnVector) {
         v = generator(phase.x);

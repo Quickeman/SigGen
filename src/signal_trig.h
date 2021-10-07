@@ -3,7 +3,7 @@
 
 #include "base_classes.h"
 
-#include <math.h>
+#include <cmath>
 #include <functional>
 
 /** Trigonometric function generator. */
@@ -17,7 +17,7 @@ public:
 
 protected:
     /** 2 * pi */
-    static constexpr fp_t twopi = 2.f * (fp_t)M_PI;
+    static constexpr fp_t twopi { 2.0 * M_PI };
 };
 
 

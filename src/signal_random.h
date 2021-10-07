@@ -55,7 +55,7 @@ public:
     ~PinknoiseGenerator() = default;
 
 private:
-    static constexpr int quality = 8;
+    static constexpr int quality { 8 };
     int frame;
     std::array<fp_t, quality> values;
 };

@@ -1,7 +1,7 @@
 #ifndef _SIGGEN_FUNCTIONS_H
 #define _SIGGEN_FUNCTIONS_H
 
-#include "math.h"
+#include <cmath>
 
 /** Name space for mathematical functions. */
 namespace maths {
@@ -10,9 +10,9 @@ namespace maths {
 template<typename T>
 constexpr
 T power(T x, unsigned int n) {
-    T rv = 1;
+    T rv { 1 };
 
-    for (int i = 0; i < n; i++)
+    for (int i { 0 }; i < n; i++)
         rv *= x;
     
     return rv;
@@ -22,7 +22,7 @@ T power(T x, unsigned int n) {
 template<typename T>
 constexpr
 T factorial(T x) {
-    T rv = 1;
+    T rv { 1 };
     while (x > 0) {
         rv *= x;
         x -= 1;
@@ -52,8 +52,8 @@ T sinTaylor(T x) {
 template<typename T>
 constexpr
 T sinTaylorSafe(T x) {
-    constexpr T pi = M_PI;
-    constexpr T twopi = pi + pi;
+    constexpr T pi { M_PI };
+    constexpr T twopi { pi + pi };
 
     if ((x > twopi) or (x < (T)0.0)) {
         x = fmod(x, twopi);
