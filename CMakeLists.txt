@@ -30,6 +30,9 @@ add_library(${LIB_NAME} ${SRCS})
 # Add compiler flags
 target_compile_options(${LIB_NAME} PRIVATE -O2 -Wall -pedantic)
 
+# Make PIC
+set_target_properties(${LIB_NAME} PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
+
 # Put compiled library in bin
 set_target_properties(${LIB_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
