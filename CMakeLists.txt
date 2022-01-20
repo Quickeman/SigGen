@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Make sure the compiler looks here for source files
-if (UNIX)
+if (APPLE)
     include_directories(/usr/local/include)
     link_directories(/usr/local/lib)
 endif()
