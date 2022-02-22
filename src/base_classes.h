@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <functional>
+#include <cstddef>
 
 typedef float fp_t;
 
